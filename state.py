@@ -20,7 +20,7 @@ class ActionHistory(BaseModel):
 
 class State(TypedDict):
     email_input: dict
-    messages: Annotated[list, add_messages] # 用于合并对话消息
+    messages: Annotated[list, add_messages]
     
     triage_result: str 
     triage_confidence: float
@@ -28,7 +28,7 @@ class State(TypedDict):
     notification_summary: str
     
     email_metadata: EmailMetadata
-    action_history: Annotated[list, operator.add] # 必须用 operator.add 合并普通列表
+    action_history: Annotated[list, operator.add]
     
     error_count: int
     max_retries: int
