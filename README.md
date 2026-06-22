@@ -57,7 +57,7 @@ SMTP_PASSWORD="your_app_password"
 # --- LLM Configuration (DeepSeek) ---
 LLM_MODEL="deepseek-chat"
 DEEPSEEK_API_KEY="sk-xxxxxx"
-LLM_BASE_URL="https://api.deepseek.com/v1"
+LLM_BASE_URL="https://api.deepseek.com"
 
 # --- Notification Configuration ---
 PUSHPLUS_TOKEN="your_pushplus_token"
