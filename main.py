@@ -9,7 +9,6 @@ from config import logger, store
 from workflow import create_email_workflow, initialize_prompts
 
 def parse_email_bytes(raw_email_bytes: bytes, email_id: str) -> dict:
-    """提取复用：将原始字节解析为大模型需要的字典格式"""
     msg = email.message_from_bytes(raw_email_bytes)
     
     sub_tuple = decode_header(msg["Subject"])[0]
@@ -22,7 +21,6 @@ def parse_email_bytes(raw_email_bytes: bytes, email_id: str) -> dict:
             if content_type == "text/plain":
                 body = part.get_payload(decode=True).decode(errors="ignore")
                 break
-            # HTML 兜底抓取
             elif content_type == "text/html" and not body:
                 html_content = part.get_payload(decode=True).decode(errors="ignore")
                 body = re.sub(r'<[^>]+>', ' ', html_content)
@@ -65,13 +63,13 @@ def process_unread_emails(client: IMAPClient, agent, user_id: str):
             for node_name, state_update in output.items():
                 if node_name == "triage":
                     res = state_update.get('triage_result')
-                    logger.info(f"🧠 大模型判定结果 -> [{res.upper()}]")
+                    logger.info(f" 大模型判定结果 -> [{res.upper()}]")
         
         client.set_flags(messages, [b'\\Seen'])
 
 def main():
     print("=" * 60)
-    print(" 🚀 记忆增强邮件智能体 —— 24/7 IDLE 极速监听模式")
+    print("  记忆增强邮件智能体 —— 24/7 IDLE 极速监听模式")
     print("=" * 60)
 
     IMAP_SERVER = os.getenv("IMAP_SERVER") 
@@ -93,7 +91,7 @@ def main():
             with IMAPClient(IMAP_SERVER, ssl=True) as client:
                 client.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
                 client.select_folder('INBOX')
-                logger.info("✅ 成功连接 QQ 邮箱服务器！")
+                logger.info(" 成功连接邮箱服务器！")
                 
                 # 第一步：先处理关机期间积累的未读邮件
                 process_unread_emails(client, agent, user_id)
@@ -121,10 +119,10 @@ def main():
                         process_unread_emails(client, agent, user_id)
                         
         except KeyboardInterrupt:
-            logger.info("🛑 收到退出指令，安全关机。")
+            logger.info(" 收到退出指令，安全关机。")
             break
         except Exception as e:
-            logger.warning(f"⚠️ 连接断开或发生异常: {e}。10 秒后尝试重新连接...")
+            logger.warning(f" 连接断开或发生异常: {e}。10 秒后尝试重新连接...")
             time.sleep(10)
 
 if __name__ == "__main__":
