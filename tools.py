@@ -12,17 +12,16 @@ from langmem import create_manage_memory_tool, create_search_memory_tool
 from config import logger
 
 def safe_tool(func):
-    """工具异常拦截装饰器"""
     @wraps(func)
     def wrapper(*args, **kwargs):
         tool_name = func.__name__
         try:
-            logger.debug(f"🔧 调用工具 [{tool_name}]")
+            logger.debug(f" 调用工具 [{tool_name}]")
             result = func(*args, **kwargs)
-            logger.info(f"✅ 工具 [{tool_name}] 执行成功")
+            logger.info(f" 工具 [{tool_name}] 执行成功")
             return result
         except Exception as e:
-            error_msg = f"❌ 工具 [{tool_name}] 执行失败: {str(e)}\n{traceback.format_exc()}"
+            error_msg = f" 工具 [{tool_name}] 执行失败: {str(e)}\n{traceback.format_exc()}"
             logger.error(error_msg)
             return f"工具调用失败: {str(e)}。请告知用户。"
     return wrapper
@@ -81,7 +80,7 @@ def write_email(to: str, subject: str, content: str, cc: str = "", draft_only: b
     if not smtp_host or not smtp_password:
         return "⚠️ SMTP 未完全配置，邮件未实际发送。"
 
-    # 使用 SSL 协议发送（主流邮箱如 QQ/网易 必需）
+    # 使用 SSL 协议发送
     with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
         server.login(smtp_user, smtp_password)
         all_recipients = [to] + [c.strip() for c in cc.split(",") if c.strip()]
