@@ -211,7 +211,7 @@ def optimize_prompts(feedback: str, user_id: str):
         result = optimizer.invoke({"trajectories": trajectories, "prompts": prompts})
         improved_response = next((p["prompt"] for p in result if p["name"] == "response"), r_prompt)
         store.put(("email_assistant", user_id, "prompts"), "response_prompt", improved_response)
-        logger.info("✅ 程序性记忆（指令）已成功进化！")
+        logger.info("✅ 程序性记忆（指令）已成功优化！")
     except Exception as e:
         logger.error(f"优化失败: {e}")
 
