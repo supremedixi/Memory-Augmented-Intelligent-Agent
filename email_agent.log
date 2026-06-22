@@ -1,0 +1,36 @@
+2026-06-22 09:17:42,737 | INFO    | langchain_openai.chat_models._client_utils | langchain-openai detected system proxy configuration and no explicit `http_socket_options` / `http_client` / `http_async_client` / `openai_proxy`; skipping the custom `httpx` transport so httpx's env-proxy auto-detection applies. Pass `http_socket_options=[...]` to opt back into kernel-level TCP keepalive tuning on top of the env proxy.
+2026-06-22 09:17:45,009 | INFO    | numexpr.utils | NumExpr defaulting to 8 threads.
+2026-06-22 09:17:49,219 | INFO    | sentence_transformers.base.model | No device provided, using cpu
+2026-06-22 09:17:49,656 | INFO    | httpx | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-06-22 09:17:49,673 | INFO    | sentence_transformers.base.model | Loading SentenceTransformer model from BAAI/bge-small-zh-v1.5.
+2026-06-22 09:17:50,175 | INFO    | EmailAgent | ✅ 基础配置、LLM 与记忆存储初始化完成
+2026-06-22 09:17:51,222 | INFO    | EmailAgent | ✅ 成功连接 QQ 邮箱服务器！
+2026-06-22 09:17:51,339 | INFO    | EmailAgent | ⏳ 进入 IDLE 长连接模式，毫秒级监听新邮件...
+2026-06-22 09:20:52,742 | INFO    | EmailAgent | 📬 发现 1 封新邮件，开始处理...
+2026-06-22 09:20:52,842 | INFO    | EmailAgent | ⚡ 正在处理: 关于“X系列”新品直播发布会筹备进展及追加预算申请
+2026-06-22 09:20:53,076 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 09:20:54,863 | INFO    | EmailAgent | 🧠 大模型判定结果 -> [RESPOND]
+2026-06-22 09:20:54,967 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 09:20:56,410 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 09:34:35,500 | INFO    | EmailAgent | 📬 发现 1 封新邮件，开始处理...
+2026-06-22 09:34:35,772 | INFO    | EmailAgent | ⚡ 正在处理: test
+2026-06-22 09:34:35,957 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 09:34:37,300 | INFO    | EmailAgent | 🧠 大模型判定结果 -> [IGNORE]
+2026-06-22 10:20:03,257 | INFO    | langchain_openai.chat_models._client_utils | langchain-openai detected system proxy configuration and no explicit `http_socket_options` / `http_client` / `http_async_client` / `openai_proxy`; skipping the custom `httpx` transport so httpx's env-proxy auto-detection applies. Pass `http_socket_options=[...]` to opt back into kernel-level TCP keepalive tuning on top of the env proxy.
+2026-06-22 10:20:05,132 | INFO    | numexpr.utils | NumExpr defaulting to 8 threads.
+2026-06-22 10:20:09,441 | INFO    | sentence_transformers.base.model | No device provided, using cpu
+2026-06-22 10:20:09,463 | INFO    | sentence_transformers.base.model | Loading SentenceTransformer model from BAAI/bge-small-zh-v1.5.
+2026-06-22 10:20:09,907 | INFO    | EmailAgent | ✅ 基础配置、LLM 与记忆存储初始化完成
+2026-06-22 10:20:10,896 | INFO    | EmailAgent | ✅ 成功连接 QQ 邮箱服务器！
+2026-06-22 10:20:11,026 | INFO    | EmailAgent | ⏳ 进入 IDLE 长连接模式，毫秒级监听新邮件...
+2026-06-22 10:21:41,651 | INFO    | EmailAgent | 📬 发现 1 封新邮件，开始处理...
+2026-06-22 10:21:41,740 | INFO    | EmailAgent | ⚡ 正在处理: 回复：【请批示】关于“X系列”新品直播发布会筹备进展及追加预算申请
+2026-06-22 10:21:45,648 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 10:21:48,272 | INFO    | EmailAgent | 🧠 大模型判定结果 -> [RESPOND]
+2026-06-22 10:21:48,879 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 10:21:50,255 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 10:21:58,960 | INFO    | EmailAgent | 💾 草稿已成功同步至邮箱: 主题='回复：【请批示】关于"X系列"新品直播发布会筹备进展及追加预算申请'
+2026-06-22 10:21:58,970 | INFO    | EmailAgent | ✅ 工具 [write_email] 执行成功
+2026-06-22 10:21:59,315 | INFO    | httpx | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-22 10:22:02,810 | INFO    | EmailAgent | 🔔 [通知归档] 主题: 回复：【请批示】关于“X系列”新品直播发布会筹备进展及追加预算申请 | 提取内容: ✅ 智能体已为您自动起草了回复，请在闲暇时前往邮箱草稿箱查看并发送。
+2026-06-22 10:22:03,038 | INFO    | EmailAgent | ✅ 验证码/通知已成功推送到微信！
