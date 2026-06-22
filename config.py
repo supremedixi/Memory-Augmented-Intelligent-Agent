@@ -7,11 +7,9 @@ from langchain_openai import ChatOpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
 from langgraph.store.memory import InMemoryStore
 
-# ----- 强制离线加载模型 -----
-os.environ["HF_HUB_OFFLINE"] = "1"          # 禁止联网
+os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com") 
 
-# ----- 日志设置 -----
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)-7s | %(name)s | %(message)s",
@@ -22,10 +20,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("EmailAgent")
 
-# ----- 加载环境变量 -----
 load_dotenv()
 
-# ----- 配置类 -----
 @dataclass
 class AgentConfig:
     llm_model: str = os.getenv("LLM_MODEL", "deepseek-chat")
@@ -42,9 +38,8 @@ class AgentConfig:
 
 agent_config = AgentConfig()
 if not agent_config.llm_api_key:
-    raise ValueError("❌ LLM API Key 未设置！请在 .env 中设置 DEEPSEEK_API_KEY")
+    raise ValueError(" LLM API Key 未设置！请在 .env 中设置 DEEPSEEK_API_KEY")
 
-# ----- 实例化全局单例 -----
 llm = ChatOpenAI(
     model=agent_config.llm_model,
     api_key=agent_config.llm_api_key,
@@ -55,7 +50,6 @@ llm = ChatOpenAI(
     max_retries=agent_config.llm_max_retries,
 )
 
-# 使用本地缓存加载模型（强制离线）
 embeddings = HuggingFaceEmbeddings(
     model_name=agent_config.embedding_model,
     model_kwargs={"local_files_only": True}
@@ -63,4 +57,4 @@ embeddings = HuggingFaceEmbeddings(
 
 store = InMemoryStore(index={"embed": embeddings, "dims": 512})
 
-logger.info("✅ 基础配置、LLM 与记忆存储初始化完成")
+logger.info(" 基础配置、LLM 与记忆存储初始化完成")
