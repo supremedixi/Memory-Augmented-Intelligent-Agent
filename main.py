@@ -52,7 +52,7 @@ def process_unread_emails(client: IMAPClient, agent, user_id: str):
         raw_email = data[b'RFC822']
         em_dict = parse_email_bytes(raw_email, str(msg_id))
         
-        logger.info(f"⚡ 正在处理: {em_dict['subject']}")
+        logger.info(f"正在处理: {em_dict['subject']}")
         
         inputs = {"email_input": em_dict, "messages": [], "error_count": 0, "max_retries": 3}
         config = {"configurable": {"langgraph_user_id": user_id}}
@@ -112,7 +112,7 @@ def main():
                         process_unread_emails(client, agent, user_id)
                         logger.info("💤 邮件处理完毕，重新进入潜行监听状态...")
                     else:
-                        # 强制产生网络数据流动，告诉路由器和 QQ 服务器“我还活着，别掐我网线”
+                        # 强制产生网络数据流动
                         client.noop()
                         
                         # 顺便兜底检查一下，防止 QQ 邮箱漏推了通知
