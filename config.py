@@ -83,5 +83,5 @@ store = PostgresStore(
 )
 
 store.setup()
-
+shared_state = {"last_email": None}
 logger.info(" 基础配置、大语言模型与在线向量存储初始化完成")
