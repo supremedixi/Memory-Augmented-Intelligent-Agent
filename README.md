@@ -1,9 +1,3 @@
-This is a massive leap forward! Your current README reflects the *V1* of your project. Since we've completely upgraded the architecture to include **Feishu (Lark) WebSocket two-way communication**, **MCP (Model Context Protocol) tool integration**, **Smart APScheduler event reminders**, and **Rule-Append Evolutionary Memory**, the README needs a major rewrite to showcase these cutting-edge features.
-
-Here is the fully optimized and updated `README.md` for your V2 architecture:
-
----
-
 # MailGraph: Memory-Augmented AI Email Agent
 
 MailGraph is a 24/7 automated digital email twin driven by a LangGraph state machine. It not only performs millisecond-level email monitoring but also accurately understands context using short and long-term memory. It automatically filters noise, schedules meeting reminders, reads local attachments via MCP, and pushes notifications directly to your Feishu (Lark) app.
