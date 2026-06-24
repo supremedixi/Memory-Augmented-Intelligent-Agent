@@ -26,6 +26,7 @@ class State(TypedDict):
     triage_confidence: float
     triage_reasoning: str
     notification_summary: str
+    event_time: str
     
     email_metadata: EmailMetadata
     action_history: Annotated[list, operator.add]
