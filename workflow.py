@@ -207,7 +207,7 @@ def optimize_prompts(feedback: str, user_id: str):
     response_entry = store.get(("email_assistant", user_id, "prompts"), "response_prompt")
     current_prompt = response_entry.value if response_entry else "请根据上下文专业回复。\n\n【专属行为规范】"
 
-    extractor = llm.with_structured_output(RuleExtraction)
+    extractor = llm.with_structured_output(RuleExtraction, method="function_calling")
     extraction_prompt = (
         f"用户对你刚才写的邮件草稿提出了批评或修改建议：\n「{feedback}」\n\n"
         "请将这个具体的建议，提炼成一条通用的【行为规范/规则】，以便未来写邮件时永远遵守此规则。"
